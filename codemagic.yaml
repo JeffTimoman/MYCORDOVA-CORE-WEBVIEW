@@ -47,44 +47,79 @@
 #       email:
 #         recipients:
 #           - ppti.jeffersontimotius@gmail.com
+
 workflows:
   cordova-android:
-    name: Cordova Android Debug Workflow
+    name: Cordova Android Workflow
     environment:
       node: latest
       java: latest
     scripts:
       - name: Install SDK and Dependencies
         script: |
+          echo "Installing Node.js dependencies..."
           npm install
           npm ci
+          echo "Installing SDKMAN..."
           curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
+          echo "Installing required Java and Gradle versions..."
           sdk install java 11.0.20-amzn
           sdk install gradle 7.1.1
+
       - name: Add Android Platform
         script: |
+          echo "Adding Android platform to Cordova..."
           cordova platform add android
-      - name: Build Debug APK
+
+      - name: Build Keystore
         script: |
-          cordova build android --debug
-      - name: Compress The Application
+          echo "Creating Keystore..."
+          keytool -genkeypair -v -keystore CUSTEM.keystore -storepass "@CUSTEM211" -keyalg RSA -keysize 2048 -validity 10001 \
+            -alias Dcustem -storetype PKCS12 \
+            -dname "CN=Custem, OU=Custem2, O=Custem3, L=Custem3, ST=java, C=id"
+
+      - name: Build Bundle (.aab)
         script: |
-          echo "Compressing... for debug"
-          mkdir uploadfile
+          echo "Building Android App Bundle..."
+          cordova build android --release -- \
+            --keystore=./CUSTEM.keystore \
+            --storePassword=@CUSTEM211 \
+            --alias=Dcustem \
+            --password=@CUSTEM211 \
+            --packageType=bundle
+
+      - name: Build APK (.apk)
+        script: |
+          echo "Building APK..."
+          cordova build android --release -- \
+            --keystore=./CUSTEM.keystore \
+            --storePassword=@CUSTEM211 \
+            --alias=Dcustem \
+            --password=@CUSTEM211 \
+            --packageType=apk
+
+      - name: Compress Application Files
+        script: |
+          echo "Compressing application files for upload..."
+          mkdir -p uploadfile
           cp -r platforms uploadfile
-          zip -r debug_ready.zip uploadfile
-          echo "Ready for upload"
-      - name: Upload APK
+          cp CUSTEM.keystore uploadfile
+          zip -r ready.zip uploadfile
+          echo "Application files compressed into ready.zip"
+
+      - name: Upload APK to Codemagic
         script: |
-          echo "Deploying debug APK to Codemagic..."
+          echo "Uploading application to Codemagic..."
           curl -v -X POST \
-            -F "file=/Users/builder/clone/debug_ready.zip" \
+            -F "file=@ready.zip" \
             -H "x-auth-token: $CM_API_TOKEN" \
             -H "content-type: multipart/form-data" \
             https://api.codemagic.io/artifacts/upload
+
     artifacts:
-      - /Users/builder/clone/debug_ready.zip
+      - /Users/builder/clone/ready.zip
+
     publishing:
       email:
         recipients:
