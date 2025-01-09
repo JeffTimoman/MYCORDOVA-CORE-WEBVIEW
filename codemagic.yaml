@@ -48,79 +48,67 @@
 #         recipients:
 #           - ppti.jeffersontimotius@gmail.com
 
+# codemagic.yml
 workflows:
-  cordova-android:
-    name: Cordova Android Workflow
+  build_android:
+    name: Build Cordova Android App
     environment:
-      node: latest
-      java: latest
+      vars:
+        CORDOVA_ANDROID_VERSION: "12.0.0" # Adjust to your Cordova Android version
+      node: latest # Use the latest version of Node.js
     scripts:
-      - name: Install SDK and Dependencies
-        script: |
-          echo "Installing Node.js dependencies..."
-          npm install
-          npm ci
-          echo "Installing SDKMAN..."
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          echo "Installing required Java and Gradle versions..."
-          sdk install java 11.0.20-amzn
-          sdk install gradle 7.1.1
+      # Install Cordova
+      - name: Install Cordova
+        script: npm install -g cordova
+      
+      # Install dependencies
+      - name: Install dependencies
+        script: npm ci
 
-      - name: Add Android Platform
+      # Build the Cordova Android app
+      - name: Build Cordova Android App
         script: |
-          echo "Adding Android platform to Cordova..."
-          cordova platform add android
+          cordova platform add android@$CORDOVA_ANDROID_VERSION
+          cordova build android --release
+      
+      # Create the signed APK (if keystore is configured)
+      - name: Sign APK
+        script: |
+          # Update these variables with your keystore information
+          export KEYSTORE_PATH="path/to/your/keystore.jks"
+          export KEY_ALIAS="your-key-alias"
+          export STORE_PASSWORD="your-keystore-password"
+          export KEY_PASSWORD="your-key-password"
+          
+          # Sign the APK
+          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
+            -keystore $KEYSTORE_PATH \
+            platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk $KEY_ALIAS
 
-      - name: Build Keystore
-        script: |
-          echo "Creating Keystore..."
-          keytool -genkeypair -v -keystore CUSTEM.keystore -storepass "@CUSTEM211" -keyalg RSA -keysize 2048 -validity 10001 \
-            -alias Dcustem -storetype PKCS12 \
-            -dname "CN=Custem, OU=Custem2, O=Custem3, L=Custem3, ST=java, C=id"
+          # Optimize the APK
+          zipalign -v 4 \
+            platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk \
+            platforms/android/app/build/outputs/apk/release/app-release-signed.apk
 
-      - name: Build Bundle (.aab)
+      # Upload the APK as an artifact
+      - name: Upload APK as an artifact
         script: |
-          echo "Building Android App Bundle..."
-          cordova build android --release -- \
-            --keystore=./CUSTEM.keystore \
-            --storePassword=@CUSTEM211 \
-            --alias=Dcustem \
-            --password=@CUSTEM211 \
-            --packageType=bundle
-
-      - name: Build APK (.apk)
-        script: |
-          echo "Building APK..."
-          cordova build android --release -- \
-            --keystore=./CUSTEM.keystore \
-            --storePassword=@CUSTEM211 \
-            --alias=Dcustem \
-            --password=@CUSTEM211 \
-            --packageType=apk
-
-      - name: Compress Application Files
-        script: |
-          echo "Compressing application files for upload..."
-          mkdir -p uploadfile
-          cp -r platforms uploadfile
-          cp CUSTEM.keystore uploadfile
-          zip -r ready.zip uploadfile
-          echo "Application files compressed into ready.zip"
-
-      - name: Upload APK to Codemagic
-        script: |
-          echo "Uploading application to Codemagic..."
-          curl -v -X POST \
-            -F "file=@ready.zip" \
-            -H "x-auth-token: $CM_API_TOKEN" \
-            -H "content-type: multipart/form-data" \
-            https://api.codemagic.io/artifacts/upload
+          cp platforms/android/app/build/outputs/apk/release/app-release-signed.apk $CM_BUILD_DIR/app-release.apk
 
     artifacts:
-      - /Users/builder/clone/ready.zip
+      - $CM_BUILD_DIR/app-release.apk
 
     publishing:
       email:
         recipients:
           - ppti.jeffersontimotius@gmail.com
+        body: |
+          Hi Jefferson,
+
+          Your Cordova Android app has been built successfully. Please find the APK attached.
+
+          Best regards,
+          Codemagic
+        subject: Cordova Android App Build Success
+        attachment_paths:
+          - $CM_BUILD_DIR/app-release.apk
