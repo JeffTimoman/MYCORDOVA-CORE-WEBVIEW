@@ -47,13 +47,12 @@
 #       email:
 #         recipients:
 #           - ppti.jeffersontimotius@gmail.com
-
 workflows:
   cordova-android:
     name: Cordova Android Workflow
     environment:
       node: latest
-      java: 11  # Use Java 11 to match Gradle's compatibility
+      java: 11
     scripts:
       - name: Install SDK and Dependencies
         script: |
@@ -65,6 +64,7 @@ workflows:
           sdk use java 11.0.20-amzn
           sdk install gradle 7.1.1
           sdk use gradle 7.1.1
+          yes | sdkmanager "build-tools;34.0.0" "platforms;android-34"
       - name: Add Android Platform
         script: |
           cordova platform add android
