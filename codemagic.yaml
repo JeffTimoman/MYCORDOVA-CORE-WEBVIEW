@@ -59,11 +59,15 @@ workflows:
           npm install
           npm ci
           curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install java 11.0.20-amzn
-          sdk use java 11.0.20-amzn
+          source "$HOME/.sdkman/bin/sdkman-init.sh"  # Ensure sdkman is initialized
+          
+          # Install a valid Java version and Gradle
+          sdk install java 11.0.20-open
+          sdk use java 11.0.20-open
           sdk install gradle 7.1.1
           sdk use gradle 7.1.1
+
+          # Ensure SDK Manager is available and install build tools and platforms
           yes | sdkmanager "build-tools;34.0.0" "platforms;android-34"
       - name: Add Android Platform
         script: |
