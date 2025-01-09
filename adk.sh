@@ -36,7 +36,7 @@ echo "cordova udh"
 Y|cordova platform add android@12.*
 cordova build android
 
-mv /workspaces/jpp1/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspaces/jpp1/
+mv /workspaces/MYCORDOVA-CORE-WEBVIEW/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspaces/MYCORDOVA-CORE-WEBVIEW/
 
 
 echo "NIH APPSNYA DH JADI"
