@@ -82,7 +82,3 @@ workflows:
     artifacts:
       - build/android/app/build/outputs/apk/release/*.apk
     
-    publishing:
-      email:
-        recipients:
-          - ppti.jeffersontimotius@gmail.com
