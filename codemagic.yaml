@@ -49,32 +49,41 @@
 #           - ppti.jeffersontimotius@gmail.com
 workflows:
   android:
-    name: Build Android APK
-    max_build_duration: 60 # Set max duration of build process (in minutes)
-    scripts:
-      - name: Install dependencies
-        script: |
-          # Install Node.js and npm
-          curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          
-          # Install Ionic and Cordova CLI
-          sudo npm install -g ionic cordova
-          
-          # Install project dependencies
-          npm install
-
-      - name: Build APK
-        script: |
-          # Build the app
-          ionic cordova build android --release --prod
-          
-      - name: Zip APK
-        script: |
-          # Zip the APK
-          cd platforms/android/app/build/outputs/apk/release
-          zip -r release.apk .
-
-    artifacts:
-      - build/android/app/build/outputs/apk/release/*.apk
-    
+    name: Build Cordova Android App
+    instance_type: macos-latest  # Or choose the appropriate instance type
+    platform: android
+    android:
+      gradle:
+        version: 7.0  # You can set the version you are using
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"  # Set a cron schedule if needed (daily here)
+    environment:
+      vars:
+        APP_NAME: "MyCordovaApp"
+        ANDROID_HOME: "/opt/android-sdk-linux"  # Path to Android SDK
+    pre_build:
+      steps:
+        - script: |
+            # Install Node.js dependencies
+            npm install
+            # Install Cordova if not already installed
+            npm install -g cordova
+        - script: |
+            # Make sure Android SDK is installed and available
+            yes | sdkmanager --licenses
+            sdkmanager "platforms;android-30"  # Choose the appropriate Android platform version
+            sdkmanager "build-tools;30.0.3"  # Or any other required build-tools version
+    build:
+      steps:
+        - script: |
+            # Build the Cordova app for Android
+            cordova build android --release -- --keystore=my-release-key.keystore --storePassword=myPassword --alias=myAlias --password=myKeyPassword
+    post_build:
+      steps:
+        - upload:
+            artifact_path: platforms/android/app/build/outputs/apk/release/app-release.apk
+            target: "Build/Android APK"
+        - script: |
+            # Clean up
+            cordova clean
