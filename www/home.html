@@ -12,38 +12,21 @@
 </head>
 
 <body>
-    <div class="top-bar d-flex align-items-center justify-content-between px-3 py-3 text-light border-bottom">
-        <a href="#" class="opacity-0">
-            <img src="./assets/icons/arrow-small-left.png" alt="Back" style="height: 20px;">
-        </a>
-        <h5 class="m-0 flex-grow-1 text-center">Beranda</h5>
-        <a href="#" style="opacity: 0;">
-            <img src="./assets/icons/arrow-small-left.png" alt="Back" style="height: 20px;">
+    <div class="side card-custom" style="">
+        <a href="./profile.html" class="" style="">
+            <img class="side-icon" src="./assets/icons/user.png" alt="">
         </a>
     </div>
+    <div class="content" style="height: 100vh;">
+        <div class="container d-flex justify-content-center align-items-center"
+            style="overflow-y: scroll; height: 100%; ">
 
-    <div class="content py-3">
-        <div class="container" style="overflow-y: scroll; height: 90vh;">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Selamat Datang!</h2>
-                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="./assets/base-background.jpg" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-2">Telaah Filosofis dan Praktis Penelitian Tindakan Kelas</p>
-                </div>
-            </div>
+            <div class="row d-flex justify-content-center card-custom">
 
-            <div class="row d-flex justify-content-center">
-                <h2>Topik</h2>
-
-                <legend class="border-bottom border-2 mb-3" style="width: 95%;"></legend>
-                <div class="col-12 pb-5">
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="col-12" style="overflow-y: scroll; height: 95vh; scale: 98%;">
+                    <h2 class="text-light" style="">Topik</h2>
+                    <legend class="border-bottom border-2" style="width: 100%;"></legend>
+                    <div class="accordion accordion-flush" id="accordionFlushExample" >
 
                         <!-- Bab 1 -->
                         <div class="accordion-item mb-2">
@@ -91,8 +74,7 @@
                                 <div class="accordion-body">
                                     <div class="card mb-3">
                                         <a class="card-header" href="./materi2.html">
-                                            <img src="./assets/icons/document.png" alt="Materi Icon">
-                                            Materi Bab 2
+                                            <img src="./assets/icons/document.png" alt="Materi Icon">Materi Bab 2
                                         </a>
                                     </div>
                                     <div class="card">
@@ -123,8 +105,7 @@
                                 <div class="accordion-body">
                                     <div class="card mb-3">
                                         <a class="card-header" href="./materi3.html">
-                                            <img src="./assets/icons/document.png" alt="Materi Icon">
-                                            Materi Bab 3
+                                            <img src="./assets/icons/document.png" alt="Materi Icon">Materi Bab 3
                                         </a>
                                     </div>
                                     <div class="card">
@@ -155,8 +136,7 @@
                                 <div class="accordion-body">
                                     <div class="card mb-3">
                                         <a class="card-header" href="./materi4.html">
-                                            <img src="./assets/icons/document.png" alt="Materi Icon">
-                                            Materi Bab 4
+                                            <img src="./assets/icons/document.png" alt="Materi Icon">Materi Bab 4
                                         </a>
                                     </div>
                                     <div class="card">
@@ -187,8 +167,7 @@
                                 <div class="accordion-body">
                                     <div class="card mb-3">
                                         <a class="card-header" href="./materi5.html">
-                                            <img src="./assets/icons/document.png" alt="Materi Icon">
-                                            Materi Bab 5
+                                            <img src="./assets/icons/document.png" alt="Materi Icon">Materi Bab 5
                                         </a>
                                     </div>
                                     <div class="card">
@@ -211,23 +190,9 @@
         </div>
     </div>
 
-    <div class="navbar">
-        <a href="./home.html" class="navbar-item active">
-            <img src="./assets/icons/home.png" alt="Home">
-        </a>
-        <a href="./materi.html" class="navbar-item">
-            <img src="./assets/icons/book-alt.png" alt="Materi">
-        </a>
-        <a href="./quiz.html" class="navbar-item">
-            <img src="./assets/icons/memo-circle-check.png" alt="Tasks">
-        </a>
-        <a href="./profile.html" class="navbar-item">
-            <img src="./assets/icons/user.png" alt="Profile">
-        </a>
-    </div>
-
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/validate_orientation.js"></script>
 </body>
 
 </html>
