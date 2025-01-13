@@ -14,16 +14,14 @@
         rel="stylesheet">
 </head>
 <style>
-    body {
-        background: linear-gradient(to right, #ffc107, #4caf50);
-        /* add blur */
-        background-attachment: fixed;
-    }
+
+
+
 </style>
 
 <body>
-    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9">
-        <div class="wrapper" style="background: white;">
+    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9;">
+        <div class="wrapper mt-2">
             <div class="quiz-title mt-2 d-flex flex-row w-100 justify-content-between">
                 <h4>Quiz 5: Instrumen Penelitian Tindakan Kelas</h4>
                 <h4 class="Waktu"></h4>
@@ -52,125 +50,95 @@
                 <button class="btn btn-outline-secondary option" value=3 id="option3"></button>
             </div>
             <div class="buttons-wrapper mt-1">
-                <button id="prev" class="btn btn-outline-danger ">Sebelumnya</button>
-                <button id="next" class="btn btn-outline-success">Selanjutnya</button>
-                <button id="finish" class="btn btn-outline-primary">Selesai</button>
+                <button id="prev" class="btn btn-secondary">Sebelumnya</button>
+                <button id="next" class="btn btn-info">Selanjutnya</button>
+                <button id="finish" class="btn btn-warning">Selesai</button>
             </div>
         </div>
-        <div class="wrapper-2 mt-2" style="background: white;">
-            <h3>Kuisnya sudah selesai!</h3>
+        <div class="wrapper-2 mt-2">
+            <h3>Kamu telah menyelesaikan kuis.</h3>
             <div class="message">
-                Tekan tombol selesai dibawah skor untuk kembali ke halaman utama.
+                Harap tekan tombol selesai untuk kembali ke halaman quiz.
             </div>
 
             <div class="rating mt-4"></div>
             <div class="mt-2">
-                Skor quiz kamu: <span id="infoSkor"></span>/100
+                Skor kamu adalah <span id="infoSkor"></span>/100
             </div>
-            <a href="./home.html" class="btn btn-outline-warning mt-2">Selesai</a>
+            <a href="./quiz.html" class="btn btn-outline-success mt-2">Selesai</a>
         </div>
     </div>
 </body>
 <script>
     var questionData = {
-        "questions": {
-            "0": "Apa tujuan utama dari penggunaan instrumen dalam Penelitian Tindakan Kelas (PTK)?",
-            "1": "Instrumen observasi dalam PTK digunakan untuk:",
-            "2": "Yang bukan termasuk instrumen dalam PTK adalah:",
-            "3": "Dalam PTK, instrumen tes digunakan untuk:",
-            "4": "Instrumen observasi yang digunakan dalam PTK seringkali berbentuk:",
-            "5": "Untuk mengetahui perubahan sikap siswa terhadap pelajaran, instrumen yang paling tepat digunakan adalah:",
-            "6": "Instrumen wawancara dalam PTK digunakan untuk:",
-            "7": "Dalam PTK, lembar kerja siswa (LKS) digunakan untuk:",
-            "8": "Manakah dari berikut ini yang merupakan langkah pertama dalam merancang instrumen PTK?",
-            "9": "Agar instrumen dalam PTK dapat dipercaya, apa yang harus dilakukan?",
-            "10": "Salah satu jenis instrumen yang digunakan untuk menilai perilaku atau kegiatan siswa secara langsung adalah:",
-            "11": "Dalam PTK, instrumen angket lebih berfungsi untuk:",
-            "12": "Validitas instrumen dalam PTK berfungsi untuk:",
-            "13": "Apa yang dimaksud dengan reliabilitas instrumen dalam PTK?",
-            "14": "Apa yang perlu dilakukan jika instrumen observasi dalam PTK menunjukkan hasil yang tidak konsisten?",
-            "15": "Dibawah ini yang bukan pengertian Research secara etimologis, yaitu:",
-            "16": "PTK bertujuan untuk meningkatkan kualitas pembelajaran melalui:",
-            "17": "Salah satu pendekatan yang sering digunakan dalam PTK adalah:",
-            "18": "Ciri khas PTK yang melibatkan kolaborasi adalah:",
-            "19": "Dari sisi hal yang diamati, instrumen penelitian dapat digolongkan menjadi:"
-        },
-        "options": {
-            "0": ["Menyusun hipotesis", "Mengumpulkan data untuk menganalisis pembelajaran",
-                "Meningkatkan keterampilan guru", "Menyusun laporan penelitian"
-            ],
-            "1": ["Mengukur kualitas soal ujian", "Mencatat kegiatan yang terjadi selama proses pembelajaran",
-                "Menyusun anggaran biaya penelitian", "Menganalisis hasil tes siswa"
-            ],
-            "2": ["Tes", "Angket", "Kuesioner", "Observasi"],
-            "3": ["Mengamati interaksi guru dengan siswa", "Mengumpulkan data kuantitatif dari hasil pembelajaran",
-                "Menyusun rencana pembelajaran", "Mengidentifikasi kendala yang muncul selama penelitian"
-            ],
-            "4": ["Lembar kerja siswa", "Lembar catatan lapangan", "Kuesioner", "Tes formatif"],
-            "5": ["Tes kognitif", "Kuesioner atau angket", "Lembar observasi", "Wawancara"],
-            "6": ["Mengukur tingkat pemahaman siswa", "Mengumpulkan data kualitatif tentang pengalaman siswa",
-                "Menyusun soal ujian", "Menilai hasil belajar siswa"
-            ],
-            "7": ["Menilai hasil tes akhir siswa", "Mengidentifikasi masalah dalam pembelajaran",
-                "Mendorong siswa untuk aktif berpartisipasi", "Mencatat aktivitas guru"
-            ],
-            "8": ["Menentukan tujuan penelitian", "Menyusun kuesioner", "Mengumpulkan data observasi",
-                "Menganalisis data"
-            ],
-            "9": ["Menggunakan instrumen yang telah terbukti efektif di penelitian sebelumnya",
-                "Membuat instrumen secepat mungkin", "Menggunakan instrumen yang sulit dipahami oleh siswa",
-                "Menerapkan instrumen tanpa pengujian terlebih dahulu"
-            ],
-            "10": ["Tes", "Angket", "Observasi", "Wawancara"],
-            "11": ["Mengamati perubahan perilaku siswa", "Mengumpulkan data mengenai pendapat atau perasaan siswa",
-                "Mengukur hasil tes akhir", "Mengidentifikasi kesulitan dalam pembelajaran"
-            ],
-            "12": ["Mengukur apakah instrumen tersebut sudah sesuai dengan tujuan penelitian",
-                "Menghitung biaya yang dibutuhkan untuk penelitian",
-                "Menentukan seberapa banyak data yang perlu dikumpulkan", "Menentukan cara menganalisis data"
-            ],
-            "13": ["Keakuratan instrumen dalam mengukur hasil belajar siswa",
-                "Kemampuan instrumen untuk menghasilkan data yang konsisten",
-                "Kecepatan instrumen dalam mengumpulkan data", "Kesederhanaan instrumen dalam penerapannya"
-            ],
-            "14": ["Menganalisis ulang data", "Melakukan perbaikan pada instrumen observasi",
-                "Mengabaikan hasil observasi tersebut", "Menambah jumlah siswa yang diobservasi"
-            ],
-            "15": ["Menemukan makna", "Meneliti", "Proses mengumpulkan", "Menganalisis data"],
-            "16": ["Penambahan jumlah siswa", "Penggunaan metode pembelajaran yang inovatif",
-                "Penyusunan kurikulum yang lebih ketat", "Peningkatan beban tugas siswa"
-            ],
-            "17": ["Observasi", "Uji coba acak", "Simulasi", "Eksperimen laboratorium"],
-            "18": ["Peneliti bekerja sendiri", "Kerjasama antara guru dan siswa", "Hanya melibatkan kepala sekolah",
-                "Penelitian dilakukan oleh dosen"
-            ],
-            "19": ["Kualitatif dan kuantitatif", "Primer dan sekunder", "Observasi dan wawancara",
-                "Deskriptif dan analitis"
-            ]
-        },
-        "answers": {
-            "0": 1,
-            "1": 1,
-            "2": 2,
-            "3": 1,
-            "4": 1,
-            "5": 1,
-            "6": 1,
-            "7": 2,
-            "8": 0,
-            "9": 0,
-            "10": 2,
-            "11": 1,
-            "12": 0,
-            "13": 1,
-            "14": 1,
-            "15": 1,
-            "16": 1,
-            "17": 0,
-            "18": 1,
-            "19": 0
-        }
-    };
+  "questions": {
+    "0": "Instrumen yang paling sesuai untuk mengumpulkan data tentang perubahan sikap siswa setelah diterapkan suatu tindakan adalah...",
+    "1": "Tujuan utama menggunakan lembar observasi dalam PTK adalah...",
+    "2": "Instrumen yang cocok untuk mengetahui persepsi guru tentang suatu program pembelajaran adalah...",
+    "3": "Apa tujuan utama dari instrumen penelitian dalam PTK?",
+    "4": "Instrumen penelitian digunakan untuk...",
+    "5": "Apa yang dimaksud dengan validitas instrumen?",
+    "6": "Reliabilitas instrumen mengacu pada...",
+    "7": "Jenis instrumen yang umum digunakan dalam PTK adalah...",
+    "8": "Contoh instrumen non-tes dalam PTK adalah...",
+    "9": "Salah satu fungsi angket dalam PTK adalah...",
+    "10": "Apa yang dimaksud dengan triangulasi data dalam PTK?",
+    "11": "Lembar observasi digunakan untuk...",
+    "12": "Angket tertutup memiliki ciri utama berupa...",
+    "13": "Instrumen yang digunakan untuk pengamatan langsung adalah...",
+    "14": "Apa yang dimaksud dengan uji coba instrumen?",
+    "15": "Dokumentasi sebagai instrumen PTK digunakan untuk...",
+    "16": "Apa kelebihan dari wawancara sebagai instrumen?",
+    "17": "Apa fungsi instrumen PTK dalam siklus penelitian?",
+    "18": "Kuesioner digunakan untuk mengumpulkan data yang bersifat...",
+    "19": "Berikut adalah prinsip utama pembuatan instrumen PTK, kecuali..."
+  },
+  "options": {
+    "0": ["a. Tes tertulis", "b. Angket", "c. Observasi", "d. Wawancara"],
+    "1": ["a. Mengukur kemampuan kognitif siswa", "b. Mengamati perilaku siswa secara langsung", "c. Mengumpulkan data kuantitatif", "d. Mengetahui motivasi belajar siswa"],
+    "2": ["a. Jurnal refleksi", "b. Tes unjuk kerja", "c. Dokumentasi", "d. Wawancara mendalam"],
+    "3": ["a. Mengisi waktu luang", "b. Mengukur variabel penelitian", "c. Mempermudah administrasi", "d. Membuat kesimpulan langsung"],
+    "4": ["a. Membuat hipotesis", "b. Mengumpulkan data", "c. Menyusun teori", "d. Menulis laporan"],
+    "5": ["a. Kemampuan instrumen mengukur secara konsisten", "b. Kemampuan instrumen mengukur apa yang seharusnya diukur", "c. Kemudahan dalam penggunaan instrumen", "d. Kemampuan instrumen membuat kesimpulan"],
+    "6": ["a. Ketepatan pengukuran", "b. Konsistensi hasil pengukuran", "c. Subjektivitas pengukuran", "d. Kemudahan interpretasi"],
+    "7": ["a. Tes dan non-tes", "b. Kuantitatif dan kualitatif", "c. Eksperimen dan observasi", "d. Wawancara dan statistik"],
+    "8": ["a. Lembar observasi", "b. Soal pilihan ganda", "c. Tes essay", "d. Tes psikologi"],
+    "9": ["a. Mengukur tingkat kemampuan siswa", "b. Menggali opini atau pendapat responden", "c. Menentukan nilai siswa", "d. Menjelaskan data kuantitatif"],
+    "10": ["a. Menggunakan satu metode pengumpulan data", "b. Menggunakan berbagai metode pengumpulan data", "c. Mengabaikan data yang tidak valid", "d. Mengulang analisis data"],
+    "11": ["a. Mengetes kemampuan siswa", "b. Merekam perilaku atau kejadian", "c. Mengumpulkan data statistik", "d. Menyebarkan angket"],
+    "12": ["a. Jawaban berupa esai", "b. Pilihan jawaban terbatas", "c. Responden bebas menjawab", "d. Data bersifat deskriptif"],
+    "13": ["a. Lembar observasi", "b. Angket", "c. Wawancara", "d. Dokumentasi"],
+    "14": ["a. Memastikan laporan terselesaikan", "b. Menentukan validitas dan reliabilitas instrumen", "c. Menambah jumlah responden", "d. Membuat instrumen lebih rumit"],
+    "15": ["a. Mengukur kemampuan siswa", "b. Merekam data berbentuk arsip atau dokumen", "c. Membuat analisis tes", "d. Menentukan sikap siswa"],
+    "16": ["a. Data lebih subjektif", "b. Mendapatkan data mendalam", "c. Tidak memerlukan validasi", "d. Tidak memerlukan persiapan"],
+    "17": ["a. Untuk menutup laporan penelitian", "b. Untuk memantau dan mengevaluasi tindakan", "c. Untuk membuat hipotesis baru", "d. Untuk menambahkan variabel"],
+    "18": ["a. Objektif", "b. Subjektif", "c. Statistik", "d. Naratif"],
+    "19": ["a. Sederhana", "b. Relevan", "c. Sistematis", "d. Subjektif"]
+  },
+  "answers": {
+    "0": 1,
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 0,
+    "8": 0,
+    "9": 1,
+    "10": 1,
+    "11": 1,
+    "12": 1,
+    "13": 0,
+    "14": 1,
+    "15": 1,
+    "16": 1,
+    "17": 1,
+    "18": 1,
+    "19": 3
+  }
+}
+
 </script>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/bootstrap.js"></script>
@@ -347,5 +315,6 @@
     });
 </script>
 <script src="./js/block_back.js"></script>
+<!-- <script src="./js/validate_orientation.js"></script> -->
 
 </html>

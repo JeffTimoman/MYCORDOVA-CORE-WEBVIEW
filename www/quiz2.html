@@ -14,16 +14,14 @@
         rel="stylesheet">
 </head>
 <style>
-    body {
-        background: linear-gradient(to right, #ffc107, #4caf50);
-        /* add blur */
-        background-attachment: fixed;
-    }
+
+
+
 </style>
 
 <body>
-    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9">
-        <div class="wrapper" style="background: white;">
+    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9;">
+        <div class="wrapper mt-2">
             <div class="quiz-title mt-2 d-flex flex-row w-100 justify-content-between">
                 <h4>Quiz 2: Pendekatan Penelitian Kualitatif dan Kuantitatif dalam Penelitian Tindakan
                     Kelas</h4>
@@ -53,124 +51,195 @@
                 <button class="btn btn-outline-secondary option" value=3 id="option3"></button>
             </div>
             <div class="buttons-wrapper mt-1">
-                <button id="prev" class="btn btn-outline-danger ">Sebelumnya</button>
-                <button id="next" class="btn btn-outline-success">Selanjutnya</button>
-                <button id="finish" class="btn btn-outline-primary">Selesai</button>
+                <button id="prev" class="btn btn-secondary">Sebelumnya</button>
+                <button id="next" class="btn btn-info">Selanjutnya</button>
+                <button id="finish" class="btn btn-warning">Selesai</button>
             </div>
         </div>
-        <div class="wrapper-2 mt-2" style="background: white;">
-            <h3>Kuisnya sudah selesai!</h3>
+        <div class="wrapper-2 mt-2">
+            <h3>Kamu telah menyelesaikan kuis.</h3>
             <div class="message">
-                Tekan tombol selesai dibawah skor untuk kembali ke halaman utama.
+                Harap tekan tombol selesai untuk kembali ke halaman quiz.
             </div>
 
             <div class="rating mt-4"></div>
             <div class="mt-2">
-                Skor quiz kamu: <span id="infoSkor"></span>/100
+                Skor kamu adalah <span id="infoSkor"></span>/100
             </div>
-            <a href="./home.html" class="btn btn-outline-warning mt-2">Selesai</a>
+            <a href="./quiz.html" class="btn btn-outline-success mt-2">Selesai</a>
         </div>
     </div>
 </body>
 <script>
     var questionData = {
-        "questions": {
-            "0": "Pendekatan yang lebih menekankan pada pemahaman mendalam terhadap fenomena yang diteliti dalam konteks yang alami adalah pendekatan...",
-            "1": "Dalam penelitian tindakan kelas, tujuan utama dari pendekatan kuantitatif adalah...",
-            "2": "Metode pengumpulan data yang lebih mengutamakan observasi langsung, wawancara, dan studi kasus sering digunakan dalam pendekatan...",
-            "3": "Salah satu ciri khas pendekatan kuantitatif dalam penelitian tindakan kelas adalah...",
-            "4": "Pendekatan yang menggunakan instrumen penelitian berupa angket atau tes untuk mengukur fenomena yang diteliti termasuk dalam pendekatan...",
-            "5": "Penelitian tindakan kelas yang melibatkan analisis data kualitatif cenderung menghasilkan...",
-            "6": "Indikator yang mengukur perubahan dalam prestasi belajar siswa secara numerik dalam penelitian tindakan kelas lebih tepat menggunakan pendekatan...",
-            "7": "Pengolahan data dalam penelitian kualitatif biasanya dilakukan dengan cara...",
-            "8": "Salah satu kelebihan dari pendekatan kuantitatif dalam penelitian tindakan kelas adalah...",
-            "9": "Pendekatan kualitatif dalam penelitian tindakan kelas seringkali menggunakan...",
-            "10": "Dalam penelitian tindakan kelas dengan pendekatan kuantitatif, variabel yang diteliti cenderung...",
-            "11": "Dalam pendekatan kualitatif, pengumpulan data dilakukan melalui...",
-            "12": "Contoh instrumen penelitian yang sering digunakan dalam pendekatan kualitatif adalah...",
-            "13": "Salah satu langkah yang dilakukan dalam pendekatan kuantitatif dalam penelitian tindakan kelas adalah...",
-            "14": "Salah satu ciri penelitian kualitatif adalah...",
-            "15": "Dalam penelitian tindakan kelas, pendekatan kuantitatif lebih banyak digunakan untuk...",
-            "16": "Keuntungan menggunakan pendekatan kualitatif dalam penelitian tindakan kelas adalah...",
-            "17": "Jika peneliti ingin mengukur efektivitas suatu metode pengajaran dalam meningkatkan nilai ujian siswa, pendekatan yang tepat adalah...",
-            "18": "Dalam penelitian tindakan kelas dengan pendekatan kualitatif, data sering dikumpulkan melalui...",
-            "19": "Salah satu contoh instrumen kuantitatif dalam penelitian tindakan kelas adalah..."
-        },
-        "options": {
-            "0": ["a. Kuantitatif", "b. Kualitatif", "c. Eksperimental", "d. Komparatif"],
-            "1": ["a. Menganalisis hubungan antara variabel", "b. Memahami perspektif siswa",
-                "c. Menilai peran guru", "d. Menerapkan hipotesis teoritis"
-            ],
-            "2": ["a. Kuantitatif", "b. Kualitatif", "c. Eksperimen", "d. Mixed-method"],
-            "3": ["a. Menggunakan data numerik", "b. Menggunakan data deskriptif",
-                "c. Memahami makna di balik perilaku", "d. Melakukan studi kasus mendalam"
-            ],
-            "4": ["a. Kualitatif", "b. Kuantitatif", "c. Fenomenologis", "d. Historis"],
-            "5": ["a. Penjelasan yang terukur dan numerik", "b. Pemahaman yang mendalam tentang situasi",
-                "c. Uji hipotesis yang ketat", "d. Hasil yang dapat digeneralisasi"
-            ],
-            "6": ["a. Kualitatif", "b. Kuantitatif", "c. Eksperimental", "d. Fenomenologi"],
-            "7": ["a. Menghitung frekuensi kejadian", "b. Menggunakan uji statistik",
-                "c. Mengidentifikasi tema dan pola", "d. Menggunakan analisis regresi"
-            ],
-            "8": ["a. Dapat menggali pengalaman individu dengan mendalam",
-                "b. Menghasilkan data yang lebih objektif dan dapat diukur",
-                "c. Lebih fleksibel dalam menjelaskan konteks",
-                "d. Memahami hubungan antar faktor secara lebih luas"
-            ],
-            "9": ["a. Survei", "b. Tes standar", "c. Observasi partisipatif", "d. Analisis statistik"],
-            "10": ["a. Tidak dapat diukur", "b. Didefinisikan secara jelas dan diukur",
-                "c. Bergantung pada persepsi subjek", "d. Diubah melalui wawancara"
-            ],
-            "11": ["a. Survei numerik", "b. Angket tertutup", "c. Wawancara mendalam", "d. Uji statistik"],
-            "12": ["a. Kuesioner skala Likert", "b. Tes tertulis", "c. Jurnal atau catatan lapangan",
-                "d. Uji coba eksperimen"
-            ],
-            "13": ["a. Menyusun hipotesis yang dapat diuji", "b. Menggali makna subyektif dari data",
-                "c. Menganalisis konteks sosial peserta", "d. Mengembangkan teori baru"
-            ],
-            "14": ["a. Berfokus pada generalisasi hasil", "b. Memanfaatkan data numerik untuk analisis",
-                "c. Menganalisis fenomena dalam konteks alami", "d. Menggunakan analisis statistik"
-            ],
-            "15": ["a. Mengukur perubahan prestasi belajar siswa", "b. Menyelidiki persepsi dan opini siswa",
-                "c. Menganalisis interaksi antara guru dan siswa", "d. Menyusun teori pendidikan baru"
-            ],
-            "16": ["a. Dapat memberikan gambaran umum hasil yang bisa digeneralisasi",
-                "b. Menyediakan pemahaman lebih mendalam tentang dinamika kelas",
-                "c. Memungkinkan peneliti untuk menguji hipotesis secara numerik",
-                "d. Mempermudah pengolahan data dengan metode statistik"
-            ],
-            "17": ["a. Kualitatif", "b. Kuantitatif", "c. Studi kasus", "d. Fenomenologi"],
-            "18": ["a. Survei kuantitatif", "b. Wawancara terbuka", "c. Uji coba eksperimen",
-                "d. Pengolahan statistik"
-            ],
-            "19": ["a. Observasi kelas", "b. Kuesioner dengan skala Likert", "c. Studi kasus mendalam",
-                "d. Diskusi kelompok terarah"
-            ]
-        },
-        "answers": {
-            "0": 1,
-            "1": 0,
-            "2": 1,
-            "3": 0,
-            "4": 1,
-            "5": 1,
-            "6": 1,
-            "7": 2,
-            "8": 1,
-            "9": 2,
-            "10": 1,
-            "11": 2,
-            "12": 2,
-            "13": 0,
-            "14": 2,
-            "15": 0,
-            "16": 1,
-            "17": 1,
-            "18": 1,
-            "19": 1
-        }
-    };
+  "questions": {
+    "0": "Penelitian kualitatif bertujuan untuk ….",
+    "1": "Pendekatan kuantitatif berlandaskan pada filsafat ….",
+    "2": "Dalam penelitian kualitatif, data dikumpulkan melalui ….",
+    "3": "Salah satu ciri utama penelitian kuantitatif adalah ….",
+    "4": "Penelitian tindakan kelas biasanya menggabungkan ….",
+    "5": "Proses deduktif sering digunakan dalam penelitian ….",
+    "6": "Salah satu kelemahan penelitian kualitatif adalah ….",
+    "7": "Metode true experiment dalam penelitian kuantitatif ditandai dengan ….",
+    "8": "Penelitian kualitatif menggunakan proses ….",
+    "9": "Tujuan utama penelitian kuantitatif adalah ….",
+    "10": "Metode penelitian korelasional digunakan untuk ….",
+    "11": "Penelitian kualitatif lebih cocok untuk mengkaji ….",
+    "12": "Kapan penelitian kuantitatif dianggap efektif ….",
+    "13": "Dalam penelitian kualitatif, teori biasanya ….",
+    "14": "Salah satu ciri penelitian tindakan kelas adalah ….",
+    "15": "Data kuantitatif biasanya dianalisis dengan ….",
+    "16": "Pendekatan kualitatif sering disebut juga ….",
+    "17": "Metode kuantitatif sering digunakan untuk ….",
+    "18": "Penelitian yang menekankan proses alami di lapangan adalah ….",
+    "19": "Salah satu metode dalam penelitian kuantitatif adalah …."
+  },
+  "options": {
+    "0": [
+      "a. Menguji teori yang sudah ada",
+      "b. Mendapatkan pemahaman mendalam tentang masalah manusia",
+      "c. Membandingkan variabel dalam populasi besar.",
+      "d. Menentukan hubungan sebab-akibat"
+    ],
+    "1": [
+      "a. Positivisme logical",
+      "b. Naturalistik",
+      "c. Fenomenologi",
+      "d. Interpretatif"
+    ],
+    "2": [
+      "a. Survei",
+      "b. Kuesioner terstruktur",
+      "c. Observasi dan wawancara mendalam",
+      "d. Eksperimen lapangan"
+    ],
+    "3": [
+      "a. Fokus pada generalisasi",
+      "b. Bersifat fleksibel",
+      "c. Tidak menggunakan hipotesis",
+      "d. Tidak terikat pada variabel"
+    ],
+    "4": [
+      "a. Pendekatan kualitatif dan kuantitatif",
+      "b. Pendekatan deduktif dan induktif",
+      "c. Pendekatan deskriptif dan eksperimental",
+      "d. Benar Semua"
+    ],
+    "5": [
+      "a. Kualitatif",
+      "b. Kuantitatif",
+      "c. Partisipatif",
+      "d. Fenomenologi"
+    ],
+    "6": [
+      "a. Sulit menggali makna subjektif",
+      "b. Tidak fleksibel",
+      "c. Tidak cocok untuk generalisasi",
+      "d. Terlalu bergantung pada angka"
+    ],
+    "7": [
+      "a. Sampel acak dan kelompok kontrol",
+      "b. Analisis deskriptif",
+      "c. Observasi partisipatif",
+      "d. Wawancara mendalam"
+    ],
+    "8": [
+      "a. Deduktif",
+      "b. Induktif",
+      "c. Parsial",
+      "d. Kuantitatif"
+    ],
+    "9": [
+      "a. Memahami makna mendalam",
+      "b. Menghasilkan data deskriptif",
+      "c. Mencari generalisasi dan prediksi",
+      "d. Mengembangkan teori baru"
+    ],
+    "10": [
+      "a. Menjelaskan hubungan antara dua variabel",
+      "b. Menguji teori tertentu",
+      "c. Mengidentifikasi pola sosial",
+      "d. Membandingkan kelompok tertentu"
+    ],
+    "11": [
+      "a. Pengaruh variabel terhadap hasil belajar",
+      "b. Makna subjektif dari pengalaman seseorang",
+      "c. Efektivitas metode pembelajaran",
+      "d. Pengaruh intervensi pada populasi besar"
+    ],
+    "12": [
+      "a. Ketika data bersifat subjektif",
+      "b. Saat data dapat diukur dengan angka",
+      "c. Jika menggunakan wawancara mendalam",
+      "d. Bila latar penelitian bersifat naturalistik"
+    ],
+    "13": [
+      "a. Disusun sebelum penelitian dimulai",
+      "b. Diuji kebenarannya melalui eksperimen",
+      "c. Ditemukan selama penelitian berlangsung",
+      "d. Digunakan untuk generalisasi"
+    ],
+    "14": [
+      "a. Dilakukan di laboratorium",
+      "b. Bertujuan untuk menyempurnakan pembelajaran",
+      "c. Menggunakan data sekunder",
+      "d. Fokus pada teori tanpa praktik"
+    ],
+    "15": [
+      "a. Statistik",
+      "b. Kualitatif deskriptif",
+      "c. Interpretasi naratif",
+      "d. Pendekatan holistik"
+    ],
+    "16": [
+      "a. Logical positivism",
+      "b. Naturalistic inquiry",
+      "c. Experimental research",
+      "d. Hypothetico-deductive"
+    ],
+    "17": [
+      "a. Menguji hubungan antar variabel",
+      "b. Memahami dinamika kelompok kecil",
+      "c. Menggali pengalaman mendalam",
+      "d. Mengembangkan teori baru"
+    ],
+    "18": [
+      "a. Kuantitatif",
+      "b. Eksperimental",
+      "c. Kualitatif",
+      "d. Survei"
+    ],
+    "19": [
+      "a. Participant observation",
+      "b. Quasi-experiment",
+      "c. Ethnography",
+      "d. Field research"
+    ]
+  },
+  "answers": {
+    "0": 1,
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 2,
+    "7": 0,
+    "8": 1,
+    "9": 2,
+    "10": 0,
+    "11": 1,
+    "12": 1,
+    "13": 2,
+    "14": 1,
+    "15": 0,
+    "16": 1,
+    "17": 0,
+    "18": 2,
+    "19": 1
+  }
+}
+
 </script>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/bootstrap.js"></script>
@@ -347,5 +416,6 @@
     });
 </script>
 <script src="./js/block_back.js"></script>
+<!-- <script src="./js/validate_orientation.js"></script> -->
 
 </html>

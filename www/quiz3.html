@@ -14,17 +14,14 @@
         rel="stylesheet">
 </head>
 <style>
-        body{
-            background: linear-gradient(to right, #ffc107, #4caf50);
-            /* add blur */
-            background-attachment: fixed;
-        }
+
+
 
 </style>
 
 <body>
-    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9">
-        <div class="wrapper" style="background: white;">
+    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9;">
+        <div class="wrapper mt-2">
             <div class="quiz-title mt-2 d-flex flex-row w-100 justify-content-between">
                 <h4>Quiz 3: Hakikat Penelitian Tindakan Kelas</h4>
                 <h4 class="Waktu"></h4>
@@ -53,94 +50,94 @@
                 <button class="btn btn-outline-secondary option" value=3 id="option3"></button>
             </div>
             <div class="buttons-wrapper mt-1">
-                <button id="prev" class="btn btn-outline-danger ">Sebelumnya</button>
-                <button id="next" class="btn btn-outline-success">Selanjutnya</button>
-                <button id="finish" class="btn btn-outline-primary">Selesai</button>
+                <button id="prev" class="btn btn-secondary">Sebelumnya</button>
+                <button id="next" class="btn btn-info">Selanjutnya</button>
+                <button id="finish" class="btn btn-warning">Selesai</button>
             </div>
         </div>
-        <div class="wrapper-2 mt-2" style="background: white;">
-            <h3>Kuisnya sudah selesai!</h3>
+        <div class="wrapper-2 mt-2">
+            <h3>Kamu telah menyelesaikan kuis.</h3>
             <div class="message">
-                Tekan tombol selesai dibawah skor untuk kembali ke halaman utama.
+                Harap tekan tombol selesai untuk kembali ke halaman quiz.
             </div>
 
             <div class="rating mt-4"></div>
             <div class="mt-2">
-                Skor quiz kamu:  <span id="infoSkor"></span>/100
+                Skor kamu adalah <span id="infoSkor"></span>/100
             </div>
-            <a href="./home.html" class="btn btn-outline-warning mt-2">Selesai</a>
+            <a href="./quiz.html" class="btn btn-outline-success mt-2">Selesai</a>
         </div>
     </div>
 </body>
 <script>
     var questionData = {
-    "questions": {
-        "0": "Siapa yang pertama kali mengembangkan konsep Penelitian Tindakan pada tahun 1946?",
-        "1": "Penelitian Tindakan di Inggris dikembangkan oleh John Elliott dan Clem Adelman dengan tujuan untuk membantu guru dalam?",
-        "2": "Di Indonesia, Penelitian Tindakan pertama kali disosialisasikan pada tahun?",
-        "3": "Sosialisasi Penelitian Tindakan melalui proyek Pendidikan Guru Sekolah Dasar (PGSD) dan Pendidikan Guru Sekolah Menengah (PGSM) dilakukan pada tahun?",
-        "4": "Dalam Penelitian Tindakan di sekolah atau madrasah, siapa saja yang biasanya terlibat dalam kolaborasi?",
-        "5": "Apa kepanjangan dari PTK?",
-        "6": "Menurut Kurt Lewin (1946) Penelitian Tindakan merupakan proses pencarian ataupun penemuan yang dilakukan oleh?",
-        "7": "Menurut Mulyasa (2009) menjelaskan PTK berasal dari 3 kunci yaitu?",
-        "8": "Dapat disimpulkan dalam PTK, tindakan yang diberikan disebut juga sebagai?",
-        "9": "Berikut merupakan komponen dalam suatu kelas yang dapat dikaji melalui PTK, Kecuali?",
-        "10": "Ketika guru sedang mengajar dengan tujuan meningkatkan kualitas pembelajaran maka yang dicermati yaitu guru, siswa atau keduanya. Berikut merupakan pengertian dari komponen?",
-        "11": "Dalam prinsip PTK, apa yang menjadi dasar pelaksanaan kegiatan PTK?",
-        "12": "Salah satu prinsip dasar PTK adalah tidak boleh mengganggu komitmen guru sebagai?",
-        "13": "Apa langkah awal yang dapat dilakukan untuk memulai PTK?",
-        "14": "Metode pengumpulan data dalam PTK harus:",
-        "15": "Masalah penelitian yang dipilih oleh guru dalam PTK sebaiknya:",
-        "16": "Salah satu karakteristik utama PTK adalah:",
-        "17": "Penelitian Tindakan Kelas dilakukan secara?",
-        "18": "Apa tujuan utama dari Penelitian Tindakan Kelas?",
-        "19": "Dari pernyataan dibawah ini, yang mendasari prinsip-prinsip pelaksanaan PTK adalah?"
-    },
-    "options": {
-        "0": ["Kohn Elliott", "Kurt Lewin", "Clem Adelman", "Kemmis dan Taggart"],
-        "1": ["Mengembangkan kurikulum nasional", "Melakukan penelitian kebijakan", "Mengembangkan belajar menemukan (inquiry learning)", "Meningkatkan pengetahuan tentang guru"],
-        "2": ["1989", "1988", "1987", "1986"],
-        "3": ["1992 dan 1993", "1994 dan 1995", "1996 dan 1997", "1998 dan 1999"],
-        "4": ["Guru dan murid", "Dosen dan mahasiswa", "Guru peneliti dan guru sejawat lainnya", "Semua jawaban benar"],
-        "5": ["Penelitian Teknik Komunikasi", "Penelitian Tindakan Kelas", "Program Teknik Komunikasi", "Program Tindakan Kelas"],
-        "6": ["Dosen", "Guru", "Perorangan atau Kelompok", "Mahasiswa"],
-        "7": ["Penelitian, Tindakan, Kelas", "Penelitian, Guru, Mengajar", "Tindakan, Pembelajaran, Sarana", "Guru, Kelas, Siswa"],
-        "8": ["Rencana pembelajaran", "Treatment", "Observasi", "Refleksi"],
-        "9": ["Kurikulum", "Guru dan Siswa", "Materi pelajaran", "Hasil pembelajaran"],
-        "10": ["Guru dan Siswa", "Materi pelajaran", "Peralatan atau sarana pembelajaran", "Pengelolaan"],
-        "11": ["Situasi rutin yang nyata", "Kajian literatur secara mendalam", "Komitmen penuh pada penelitian saja", "Fokus pada evaluasi siswa"],
-        "12": ["Peneliti", "Pemimpin sekolah", "Pengajar", "Pengamat"],
-        "13": ["Menganalisis data statistik", "Melakukan analisis SWOT", "Mengadakan seminar pendidikan", "Mengumpulkan materi ajar"],
-        "14": ["Cepat dan menyeluruh", "Tidak menuntut waktu yang berlebihan", "Fokus pada satu siswa", "Menggunakan alat canggih"],
-        "15": ["Masalah kepala sekolah", "Masalah berdasarkan saran orang lain", "Masalah terkait sarana prasarana", "Masalah yang cukup merisaukannya"],
-        "16": ["Penelitian kuantitatif", "Penelitian kualitatif", "Self-reflective inquiry", "Hasil belajar"],
-        "17": ["Berkelanjutan dan bersiklus", "Satu kali selesai", "Diluar proses pembelajaran", "Sepenuhnya bergantung pada kepala sekolah"],
-        "18": ["Mengumpulkan data statistik", "Meningkatkan kualitas pembelajaran", "Menyusun kurikulum baru", "Menghitung nilai siswa"],
-        "19": ["PTK dilakukan kesadaran diri memperbaiki kinerja murid", "PTK kegiatan nyata yang dilakukan secara rutin", "PTK dimulai dengan melaksanakan peluang yang dapat diraih", "Dalam menyelenggarakan PTK, guru bersikap goyah"]
-    },
-    "answers": {
-        "0": 1,
-        "1": 2,
-        "2": 1,
-        "3": 1,
-        "4": 2,
-        "5": 1,
-        "6": 2,
-        "7": 0,
-        "8": 3,
-        "9": 0,
-        "10": 2,
-        "11": 0,
-        "12": 2,
-        "13": 1,
-        "14": 1,
-        "15": 3,
-        "16": 2,
-        "17": 0,
-        "18": 1,
-        "19": 1
-    }
-};
+  "questions": {
+    "0": "Siapakah tokoh yang pertama kali memperkenalkan konsep penelitian tindakan kelas (PTK)?",
+    "1": "Kemmis dan Taggart mengembangkan model PTK berbasis pada siklus. Apa saja langkah dalam siklus ini?",
+    "2": "John Elliot mengembangkan PTK untuk meningkatkan...",
+    "3": "Clem Adelman berkontribusi pada PTK dengan menekankan...",
+    "4": "Konsep dasar PTK yang diperkenalkan oleh Kurt Lewin menekankan pada siklus yang...",
+    "5": "Penelitian Tindakan Kelas adalah metode penelitian yang bertujuan untuk...",
+    "6": "PTK melibatkan guru sebagai...",
+    "7": "Prinsip utama PTK adalah...",
+    "8": "Prinsip kolaborasi dalam PTK berarti...",
+    "9": "Karakteristik utama PTK meliputi semua berikut ini, kecuali...",
+    "10": "Salah satu karakteristik PTK adalah prosesnya yang bersiklus. Artinya...",
+    "11": "Manfaat utama PTK bagi guru adalah...",
+    "12": "Manfaat PTK untuk siswa adalah...",
+    "13": "Apa tujuan utama PTK menurut Kemmis dan Taggart?",
+    "14": "Siklus dalam PTK membantu guru untuk...",
+    "15": "Mengapa PTK dianggap sebagai penelitian yang partisipatif?",
+    "16": "Langkah pertama dalam penelitian tindakan kelas menurut model Kemmis dan Taggart adalah...",
+    "17": "Menurut Kurt Lewin, penelitian tindakan bertujuan untuk...",
+    "18": "Ciri khas dari pendekatan yang digunakan oleh John Elliot dalam PTK adalah...",
+    "19": "Apa fungsi utama refleksi dalam siklus PTK?"
+  },
+  "options": {
+    "0": ["a. Kemmis dan Taggart", "b. Kurt Lewin", "c. John Elliot", "d. Clem Adelman"],
+    "1": ["a. Perencanaan, tindakan, observasi, refleksi", "b. Tindakan, evaluasi, revisi, implementasi", "c. Penelitian, analisis, tindakan, revisi", "d. Penilaian, refleksi, pengembangan, tindakan"],
+    "2": ["a. Pengetahuan guru tentang kurikulum", "b. Praktik pengajaran guru di kelas", "c. Sistem penilaian berbasis kompetensi", "d. Model pembelajaran berbasis proyek"],
+    "3": ["a. Teori pendidikan berbasis praktik", "b. Pentingnya kolaborasi guru dalam penelitian", "c. Sistem dokumentasi visual dalam penelitian", "d. Evaluasi pembelajaran berbasis data"],
+    "4": ["a. Berulang dan sistematis", "b. Linear dan terstruktur", "c. Eksploratif dan inovatif", "d. Formal dan evaluatif"],
+    "5": ["a. Menguji teori-teori baru di laboratorium", "b. Meningkatkan praktik pembelajaran di kelas", "c. Membandingkan hasil pembelajaran antar siswa", "d. Mengembangkan metode penilaian siswa"],
+    "6": ["a. Fasilitator pembelajaran", "b. Peneliti dalam kelasnya sendiri", "c. Evaluator kurikulum", "d. Instruktur pembelajaran inovatif"],
+    "7": ["a. Kolaborasi antara guru dan peneliti", "b. Peningkatan hasil belajar siswa", "c. Implementasi metode pengajaran baru", "d. Refleksi dan evaluasi terus-menerus"],
+    "8": ["a. Guru harus bekerja sendiri untuk memahami masalah di kelasnya", "b. Guru bekerja sama dengan rekan guru atau pihak lain", "c. Penelitian dilakukan oleh tim pengembang kurikulum", "d. Pengembangan metode belajar yang seragam"],
+    "9": ["a. Bersifat sistematis", "b. Dilakukan di luar kelas", "c. Berorientasi pada pemecahan masalah", "d. Berlangsung dalam siklus"],
+    "10": ["a. Dilakukan dalam urutan langkah tertentu dan diulang hingga hasil optimal dicapai", "b. Tidak perlu ada langkah berurutan", "c. Semua proses dilakukan sekaligus tanpa refleksi", "d. Fokus pada satu langkah saja"],
+    "11": ["a. Meningkatkan penghasilan", "b. Meningkatkan keterampilan mengajar", "c. Meningkatkan kemampuan siswa di luar sekolah", "d. Membantu siswa memahami kurikulum"],
+    "12": ["a. Mendapatkan materi pelajaran tambahan", "b. Meningkatkan pemahaman melalui metode yang efektif", "c. Belajar di luar kelas lebih sering", "d. Mendapatkan lebih banyak ujian praktik"],
+    "13": ["a. Menguji teori pendidikan", "b. Memecahkan masalah nyata di kelas", "c. Membandingkan hasil penelitian lain", "d. Mengembangkan teknologi pembelajaran"],
+    "14": ["a. Meningkatkan metode penilaian siswa", "b. Refleksi dan pengembangan terus-menerus", "c. Mengganti kurikulum sekolah", "d. Melatih siswa untuk penelitian akademis"],
+    "15": ["a. Karena melibatkan siswa secara langsung", "b. Karena melibatkan guru dan pihak terkait dalam prosesnya", "c. Karena dilaksanakan oleh tim ahli pendidikan", "d. Karena dilakukan secara independen oleh guru"],
+    "16": ["a. Refleksi", "b. Observasi", "c. Perencanaan", "d. Tindakan"],
+    "17": ["a. Mengembangkan teori-teori sosial", "b. Mengubah perilaku sosial melalui proses tindakan langsung", "c. Membantu siswa memahami materi pembelajaran", "d. Meningkatkan kemampuan literasi siswa"],
+    "18": ["a. Fokus pada perubahan kurikulum", "b. Refleksi mendalam terhadap praktik pengajaran", "c. Mengembangkan strategi belajar mandiri", "d. Implementasi metode pembelajaran inovatif"],
+    "19": ["a. Mengumpulkan data hasil belajar siswa", "b. Menilai keberhasilan tindakan yang dilakukan", "c. Mencari metode pengajaran baru", "d. Mengganti rencana awal penelitian"]
+  },
+  "answers": {
+    "0": 1,
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 1,
+    "7": 3,
+    "8": 1,
+    "9": 1,
+    "10": 0,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1,
+    "16": 2,
+    "17": 1,
+    "18": 1,
+    "19": 1
+  }
+}
 
 </script>
 <script src="./js/jquery.min.js"></script>
@@ -318,5 +315,6 @@
     });
 </script>
 <script src="./js/block_back.js"></script>
+<!-- <script src="./js/validate_orientation.js"></script> -->
 
 </html>
