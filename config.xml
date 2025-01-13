@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="lgarin211.umttujuha.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>7A|Apk</name>
-    <description>7A|APK</description>
+<widget id="lgarin211.umttujuhbe.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>7B|Apk</name>
+    <description>7B|APK</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
-        7A|APK
+        7B|APK
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />
