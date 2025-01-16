@@ -1,86 +1,33 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Happy+Monkey&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .wrapper {
   width: 100vw;
   height: 100vh;
-  background-image: url(../assets/base-background.png);
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
   position: relative;
 }
 
-#univLogo {
+.return-home-btn {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 10%;
-}
-.content {
-  width: 50%;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(76, 74, 74, 0.8);
-  flex-direction: column;
-  scale: 1.1;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
-#backToHome {
-  color: rgb(255, 130, 130);
+.return-home-btn img {
+  width: 3.2rem;
+}
+
+#logoUniv{
+  width: 6rem;
   position: absolute;
-  left: 3%;
-  top: 3%;
-  /* left: 50%;
-    bottom: 5%; */
-  /* background-color: rgba(198, 47, 47, 0.3); */
-  border-radius: 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-#backToHome:hover {
-  scale: 1.2;
-  transition: all 0.3s ease-in-out;
-}
-
-
-.card-custom {
-  /* Adds a blur effect */
-  background-color: rgba(252, 249, 218, 0.95);
-  /* White background with 20% opacity */
-  border-radius: 10px;
-  /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
-  overflow: hidden;
-  /* Ensures content stays within rounded borders */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  /* Subtle border */
-  /* Inner spacing */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.side {
-  width: 5%;
-  position: fixed;
-  z-index: 1;
-  position: absolute;
-  top: 5%;
-  left: 1%;
-  padding: 10px 25px 10px 25px;
-  justify-content: flex-start;
-  gap: 10px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.side-icon {
-  width: 4.5vw;
-  height: 4.5vw;
-  filter: invert(1);
+  top: .5%;
+  left: .5%;
+  z-index: 9999;
 }

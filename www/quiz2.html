@@ -4,418 +4,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilmu Pendidikan</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/quizes.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,700;0,800;0,900;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/quiz_detail.css">
+    <style>
+
+    </style>
 </head>
-<style>
-
-
-
-</style>
 
 <body>
-    <div class="container-fluid d-flex align-items-center justify-content-center" style="scale: 0.9;">
-        <div class="wrapper mt-2">
-            <div class="quiz-title mt-2 d-flex flex-row w-100 justify-content-between">
-                <h4>Quiz 2: Pendekatan Penelitian Kualitatif dan Kuantitatif dalam Penelitian Tindakan
-                    Kelas</h4>
-                <h4 class="Waktu"></h4>
-            </div>
-            <div id="progress-bar-container" class="mt-2">
-                <div class="progress-bar-title">
-                    <div class="progress-bar-title-text">Kemajuan Quiz: </div>
-                    <div class="progress-bar-title-text">Pertanyaan <span class="current-question">1</span> dari <span
-                            id="totalQuestion"></span></div>
+    <img src="./assets/logo-univ.png" alt="" id="logoUniv">
+    <div class="wrapper">
+        <div class="content">
+            <div class="inner-content">
+                <div class="finish-quiz" style="display: none;">
+                    <h1>HASIL QUIZ</h1>
+                    <div class="quiz-results">
+                        <span id="correct">10</span> / <span id="total">10</span>
+                    </div>
                 </div>
-                <div id="progress-bar" class="progress mt-1">
-                    <div class="progress-bar my-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="quiz-header">
+                    <div id="number">1</div>
+                    <div id="question">Apa Pengertian dari Aku Cinta Kamu?Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit. Earum esse minima magnam iste odit repudiandae commodi voluptate eaque fuga
+                        aspernatur enim et, quas eos eligendi ratione quod. Eum, dolore qui?</div>
                 </div>
-            </div>
-            <div class="quiz-question">
-                <div class="quiz-question-number mt-3">Pertanyaan <span class="current-question">1</span></div>
-                <div class="question-text-wrapper">
-                    <h5 id="question-text">Istilah pedagogia berasal dari bahasa</h5>
-                </div>
-            </div>
-            <div class="options d-grid">
-                <button class="btn btn-outline-secondary option" value=0 id="option0"></button>
-                <button class="btn btn-outline-secondary option" value=1 id="option1"></button>
-                <button class="btn btn-outline-secondary option" value=2 id="option2"></button>
-                <button class="btn btn-outline-secondary option" value=3 id="option3"></button>
-            </div>
-            <div class="buttons-wrapper mt-1">
-                <button id="prev" class="btn btn-secondary">Sebelumnya</button>
-                <button id="next" class="btn btn-info">Selanjutnya</button>
-                <button id="finish" class="btn btn-warning">Selesai</button>
-            </div>
-        </div>
-        <div class="wrapper-2 mt-2">
-            <h3>Kamu telah menyelesaikan kuis.</h3>
-            <div class="message">
-                Harap tekan tombol selesai untuk kembali ke halaman quiz.
-            </div>
 
-            <div class="rating mt-4"></div>
-            <div class="mt-2">
-                Skor kamu adalah <span id="infoSkor"></span>/100
+                <div class="options">
+                    <div class="option selected" value="0">A. Omaigad Aku Cinta Kamu Lorem ipsum dolor sit amet
+                        consectetur adipisicing
+                        elit. Ab, cum molestiae expedita nesciunt omnis modi laboriosam quisquam laudantium dolorum aut
+                        eum dolore fuga voluptatem perferendis consequuntur rem distinctio in quas!</div>
+                    <div class="option" value="1">A. Omaigad Aku Cinta Kamu Lorem ipsum dolor sit amet consectetur
+                        adipisicing
+                        elit. Ab, cum molestiae expedita nesciunt omnis modi laboriosam quisquam laudantium dolorum aut
+                        eum dolore fuga voluptatem perferendis consequuntur rem distinctio in quas!</div>
+                    <div class="option" value="2">A. Omaigad Aku Cinta Kamu Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Ab, cum molestiae expedita nesciunt omnis modi laboriosam quisquam
+                        laudantium dolorum aut eum dolore fuga voluptatem perferendis consequuntur rem distinctio
+                        in quas!</div>
+                    <div class="option" value="3">A. Omaigad Aku Cinta Kamu Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Ab, cum molestiae expedita nesciunt omnis modi laboriosam quisquam
+                        laudantium dolorum aut eum dolore fuga voluptatem perferendis consequuntur rem distinctio
+                        in quas!</div>
+                </div>
+
             </div>
-            <a href="./quiz.html" class="btn btn-outline-success mt-2">Selesai</a>
+            <div class="controller-container">
+                <button id="btn-prev">
+                    <img src="./assets/button/left.png" alt="">
+                </button>
+                <a href="./quiz.html" id="backToHome" style="display: none;">
+                    <img src="./assets/button/home.png" alt="">
+                </a>
+                <button id="btn-next">
+                    <img src="./assets/button/right.png" alt="">
+                </button>
+
+            </div>
         </div>
     </div>
 </body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/validate_orientation.js"></script>
 <script>
     var questionData = {
-  "questions": {
-    "0": "Penelitian kualitatif bertujuan untuk ….",
-    "1": "Pendekatan kuantitatif berlandaskan pada filsafat ….",
-    "2": "Dalam penelitian kualitatif, data dikumpulkan melalui ….",
-    "3": "Salah satu ciri utama penelitian kuantitatif adalah ….",
-    "4": "Penelitian tindakan kelas biasanya menggabungkan ….",
-    "5": "Proses deduktif sering digunakan dalam penelitian ….",
-    "6": "Salah satu kelemahan penelitian kualitatif adalah ….",
-    "7": "Metode true experiment dalam penelitian kuantitatif ditandai dengan ….",
-    "8": "Penelitian kualitatif menggunakan proses ….",
-    "9": "Tujuan utama penelitian kuantitatif adalah ….",
-    "10": "Metode penelitian korelasional digunakan untuk ….",
-    "11": "Penelitian kualitatif lebih cocok untuk mengkaji ….",
-    "12": "Kapan penelitian kuantitatif dianggap efektif ….",
-    "13": "Dalam penelitian kualitatif, teori biasanya ….",
-    "14": "Salah satu ciri penelitian tindakan kelas adalah ….",
-    "15": "Data kuantitatif biasanya dianalisis dengan ….",
-    "16": "Pendekatan kualitatif sering disebut juga ….",
-    "17": "Metode kuantitatif sering digunakan untuk ….",
-    "18": "Penelitian yang menekankan proses alami di lapangan adalah ….",
-    "19": "Salah satu metode dalam penelitian kuantitatif adalah …."
-  },
-  "options": {
-    "0": [
-      "a. Menguji teori yang sudah ada",
-      "b. Mendapatkan pemahaman mendalam tentang masalah manusia",
-      "c. Membandingkan variabel dalam populasi besar.",
-      "d. Menentukan hubungan sebab-akibat"
-    ],
-    "1": [
-      "a. Positivisme logical",
-      "b. Naturalistik",
-      "c. Fenomenologi",
-      "d. Interpretatif"
-    ],
-    "2": [
-      "a. Survei",
-      "b. Kuesioner terstruktur",
-      "c. Observasi dan wawancara mendalam",
-      "d. Eksperimen lapangan"
-    ],
-    "3": [
-      "a. Fokus pada generalisasi",
-      "b. Bersifat fleksibel",
-      "c. Tidak menggunakan hipotesis",
-      "d. Tidak terikat pada variabel"
-    ],
-    "4": [
-      "a. Pendekatan kualitatif dan kuantitatif",
-      "b. Pendekatan deduktif dan induktif",
-      "c. Pendekatan deskriptif dan eksperimental",
-      "d. Benar Semua"
-    ],
-    "5": [
-      "a. Kualitatif",
-      "b. Kuantitatif",
-      "c. Partisipatif",
-      "d. Fenomenologi"
-    ],
-    "6": [
-      "a. Sulit menggali makna subjektif",
-      "b. Tidak fleksibel",
-      "c. Tidak cocok untuk generalisasi",
-      "d. Terlalu bergantung pada angka"
-    ],
-    "7": [
-      "a. Sampel acak dan kelompok kontrol",
-      "b. Analisis deskriptif",
-      "c. Observasi partisipatif",
-      "d. Wawancara mendalam"
-    ],
-    "8": [
-      "a. Deduktif",
-      "b. Induktif",
-      "c. Parsial",
-      "d. Kuantitatif"
-    ],
-    "9": [
-      "a. Memahami makna mendalam",
-      "b. Menghasilkan data deskriptif",
-      "c. Mencari generalisasi dan prediksi",
-      "d. Mengembangkan teori baru"
-    ],
-    "10": [
-      "a. Menjelaskan hubungan antara dua variabel",
-      "b. Menguji teori tertentu",
-      "c. Mengidentifikasi pola sosial",
-      "d. Membandingkan kelompok tertentu"
-    ],
-    "11": [
-      "a. Pengaruh variabel terhadap hasil belajar",
-      "b. Makna subjektif dari pengalaman seseorang",
-      "c. Efektivitas metode pembelajaran",
-      "d. Pengaruh intervensi pada populasi besar"
-    ],
-    "12": [
-      "a. Ketika data bersifat subjektif",
-      "b. Saat data dapat diukur dengan angka",
-      "c. Jika menggunakan wawancara mendalam",
-      "d. Bila latar penelitian bersifat naturalistik"
-    ],
-    "13": [
-      "a. Disusun sebelum penelitian dimulai",
-      "b. Diuji kebenarannya melalui eksperimen",
-      "c. Ditemukan selama penelitian berlangsung",
-      "d. Digunakan untuk generalisasi"
-    ],
-    "14": [
-      "a. Dilakukan di laboratorium",
-      "b. Bertujuan untuk menyempurnakan pembelajaran",
-      "c. Menggunakan data sekunder",
-      "d. Fokus pada teori tanpa praktik"
-    ],
-    "15": [
-      "a. Statistik",
-      "b. Kualitatif deskriptif",
-      "c. Interpretasi naratif",
-      "d. Pendekatan holistik"
-    ],
-    "16": [
-      "a. Logical positivism",
-      "b. Naturalistic inquiry",
-      "c. Experimental research",
-      "d. Hypothetico-deductive"
-    ],
-    "17": [
-      "a. Menguji hubungan antar variabel",
-      "b. Memahami dinamika kelompok kecil",
-      "c. Menggali pengalaman mendalam",
-      "d. Mengembangkan teori baru"
-    ],
-    "18": [
-      "a. Kuantitatif",
-      "b. Eksperimental",
-      "c. Kualitatif",
-      "d. Survei"
-    ],
-    "19": [
-      "a. Participant observation",
-      "b. Quasi-experiment",
-      "c. Ethnography",
-      "d. Field research"
-    ]
-  },
-  "answers": {
-    "0": 1,
-    "1": 0,
-    "2": 2,
-    "3": 0,
-    "4": 0,
-    "5": 1,
-    "6": 2,
-    "7": 0,
-    "8": 1,
-    "9": 2,
-    "10": 0,
-    "11": 1,
-    "12": 1,
-    "13": 2,
-    "14": 1,
-    "15": 0,
-    "16": 1,
-    "17": 0,
-    "18": 2,
-    "19": 1
-  }
-}
-
+        "questions": {
+            "0": "Apa yang dimaksud dengan teori dalam penelitian kualitatif?",
+            "1": "Apa alasan utama pemilihan metode penelitian tertentu?",
+            "2": "Apa tujuan utama dari penelitian kualitatif menurut Creswell (1998)?",
+            "3": "Menurut Denzin & Lincoln (1994), penelitian kualitatif juga disebut sebagai ....",
+            "4": "Menurut penelitian kualitatif, realitas dianggap sebagai..."
+        },
+        "options": {
+            "0": [
+                "A. Teori yang disusun melalui deduktif dan logis",
+                "B. Teori yang ditemukan melalui dasar (grounded) secara induktif",
+                "C. Teori yang selalu bersifat apriori",
+                "D. Teori yang disusun tanpa data empiris"
+            ],
+            "1": [
+                "A. Masalah ditentukan berdasarkan metode yang akan digunakan.",
+                "B. Metode dipilih sesuai kesesuaian dengan masalah penelitian.",
+                "C. Peneliti bebas memilih metode tanpa mempertimbangkan fokus penelitian.",
+                "D. Metode harus ditentukan sebelum masalah penelitian diidentifikasi."
+            ],
+            "2": [
+                "A. Mengumpulkan data kuantitatif untuk dianalisis secara statistik",
+                "B. Memahami masalah sosial atau manusia secara mendalam melalui gambaran yang kompleks dan holistik",
+                "C. Membandingkan sampel besar dari sebuah populasi",
+                "D. Mendeskripsikan fenomena dengan pendekatan positivisme"
+            ],
+            "3": [
+                "A. Studi populasi",
+                "B. Penelitian laboratorium",
+                "C. Etno-metodologi atau penelitian lapangan",
+                "D. Penelitian eksperimental"
+            ],
+            "4": [
+                "A. Objektif dan tunggal",
+                "B. Subjektif dan berganda",
+                "C. Bebas dari nilai-nilai peneliti",
+                "D. Bersifat statis dan terukur"
+            ]
+        },
+        "answers": {
+            "0": 1,
+            "1": 1,
+            "2": 1,
+            "3": 2,
+            "4": 1
+        }
+    };
 </script>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.js"></script>
 <script>
-    function calc_score(user_answers) {
-        let score = 0;
-        for (let i = 0; i < user_answers.length; i++) {
-            if (user_answers[i] == questionData.answers[i]) {
-                score++;
-            }
-        }
-        return Math.floor(score / user_answers.length * 100);
-    }
+    $(document).ready(() => {
+        var currentIndex = 0;
+        var totalQuestion = Object.keys(questionData.questions).length;
+        var answers = Array(totalQuestion).fill(-1);
 
-    $(document).ready(function () {
-        var current_index = 0;
-        var total_question = Object.keys(questionData.questions).length;
-        console.log(total_question);
-        var current_check = -1;
-        var user_answers = [];
-        for (let i = 0; i < total_question; i++) {
-            user_answers.push(-1);
-        }
-        // place the first question to the page
-        $('#question-text').text(questionData.questions[current_index]);
-        $('#option0').text(questionData.options[current_index][0]);
-        $('#option1').text(questionData.options[current_index][1]);
-        $('#option2').text(questionData.options[current_index][2]);
-        $('#option3').text(questionData.options[current_index][3]);
-        $('#totalQuestion').text(total_question);
+        // Function to render a question
+        function renderQuestion(index) {
+            let questionText = questionData.questions[index];
+            let options = questionData.options[index];
 
-        $('.option').on('click', function () {
-            user_answers[current_index] = $(this).val();
-            $('.option').removeClass('active');
-            $(this).addClass('active');
-        });
+            $('#number').text(index + 1); // Update question number
+            $('#question').text(questionText); // Update question text
 
-        $('#next').on('click', function () {
-            $('.option').removeClass('active');
-            $('#prev').css('display', 'block');
-            current_index++;
-            if (current_index == total_question - 1) {
-                $('#next').css('display', 'none');
-                $('#finish').css('display', 'block');
-            }
-            $('#question-text').text(questionData.questions[current_index]);
-            $('#option0').text(questionData.options[current_index][0]);
-            $('#option1').text(questionData.options[current_index][1]);
-            $('#option2').text(questionData.options[current_index][2]);
-            $('#option3').text(questionData.options[current_index][3]);
-            $('.current-question').text(current_index + 1);
+            // Clear and render options
+            let optionsContainer = $('.options');
+            optionsContainer.empty();
+            options.forEach((option, i) => {
+                let optionClass = answers[index] === i ? 'option selected' : 'option';
+                let optionElement = $(`<div class="${optionClass}" value="${i}">${option}</div>`);
 
-            if (user_answers[current_index] != -1) {
-                $('.option').eq(user_answers[current_index]).addClass('active');
-            } else {
-                $('.option').removeClass('active');
-            }
-            // make progress bar arial-valuenow increase
-            let progress = (current_index + 1) / total_question * 100;
-            $('.my-bar').css('width', progress + '%');
-
-        });
-
-        $('#prev').on('click', function () {
-            $('.option').removeClass('active');
-            $('#next').css('display', 'block');
-            $('#finish').css('display', 'none');
-            current_index--;
-            if (current_index == 0) {
-                $('#prev').css('display', 'none');
-            }
-            $('#question-text').text(questionData.questions[current_index]);
-            $('#option0').text(questionData.options[current_index][0]);
-            $('#option1').text(questionData.options[current_index][1]);
-            $('#option2').text(questionData.options[current_index][2]);
-            $('#option3').text(questionData.options[current_index][3]);
-            $('.current-question').text(current_index + 1);
-
-            if (user_answers[current_index] != -1) {
-                $('.option').eq(user_answers[current_index]).addClass('active');
-            } else {
-                $('.option').removeClass('active');
-            }
-            let progress = (current_index + 1) / total_question * 100;
-            $('.my-bar').css('width', progress + '%');
-        });
-
-        $('#finish').on('click', function () {
-            $('.wrapper').css('display', 'none');
-            $('.wrapper-2').css('display', 'flex');
-            let score = calc_score(user_answers);
-            $('.rating').text(score + '%');
-            const ratings = document.querySelectorAll(".rating");
-            $('#infoSkor').text(score);
-
-            // Iterate over all rating items
-            ratings.forEach((rating) => {
-                // Get content and get score as an int
-                const ratingContent = rating.innerHTML;
-                const ratingScore = parseInt(ratingContent, 10);
-
-                // Define if the score is good, meh or bad according to its value
-                const scoreClass =
-                    ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
-
-                // Add score class to the rating
-                rating.classList.add(scoreClass);
-
-                // After adding the class, get its color
-                const ratingColor = window.getComputedStyle(rating).backgroundColor;
-
-                // Define the background gradient according to the score and color
-                const gradient =
-                    `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
-
-                // Set the gradient as the rating background
-                rating.setAttribute("style", gradient);
-
-                // Wrap the content in a tag to show it above the pseudo element that masks the bar
-                rating.innerHTML = `<span>${ratingScore} ${ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
-                    }</span>`;
-            });
-        });
-        var time = 1800;
-        var timer = setInterval(function () {
-            time--;
-            var minutes = Math.floor(time / 60);
-            var seconds = time - minutes * 60;
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-            }
-            if (minutes < 10) {
-                minutes = "0" + minutes;
-            }
-            $(".Waktu").html(minutes + ":" + seconds);
-            if (time == 0) {
-                clearInterval(timer);
-                $('.wrapper').css('display', 'none');
-                $('.wrapper-2').css('display', 'flex');
-                let score = calc_score(user_answers);
-                $('.rating').text(score + '%');
-                const ratings = document.querySelectorAll(".rating");
-                $('#infoSkor').text(score);
-
-                // Iterate over all rating items
-                ratings.forEach((rating) => {
-                    // Get content and get score as an int
-                    const ratingContent = rating.innerHTML;
-                    const ratingScore = parseInt(ratingContent, 10);
-
-                    // Define if the score is good, meh or bad according to its value
-                    const scoreClass =
-                        ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
-
-                    // Add score class to the rating
-                    rating.classList.add(scoreClass);
-
-                    // After adding the class, get its color
-                    const ratingColor = window.getComputedStyle(rating).backgroundColor;
-
-                    // Define the background gradient according to the score and color
-                    const gradient =
-                        `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
-
-                    // Set the gradient as the rating background
-                    rating.setAttribute("style", gradient);
-
-                    // Wrap the content in a tag to show it above the pseudo element that masks the bar
-                    rating.innerHTML = `<span>${ratingScore} ${ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
-                        }</span>`;
+                // Add click handler for options
+                optionElement.click(() => {
+                    answers[index] = i; // Update the selected answer
+                    $('.option').removeClass('selected'); // Remove selected from others
+                    optionElement.addClass('selected'); // Add selected to clicked option
                 });
+
+                optionsContainer.append(optionElement);
+            });
+        }
+
+        // Function to calculate and display results
+        function showResults() {
+            let correctAnswers = 0;
+            for (let i = 0; i < totalQuestion; i++) {
+                if (answers[i] === questionData.answers[i]) {
+                    correctAnswers++;
+                }
             }
-        }, 1000);
+
+            // Show the results screen with a better layout
+            $('.inner-content').html(`
+        <div class="finish-quiz">
+            <h1 stlye="margin-top: 0.5rem;">Quiz Completed!</h1>
+            <div class="quiz-results">
+                <div class="results-circle">
+                    <span class="score">${correctAnswers}</span>
+                    <span class="separator">/</span>
+                    <span class="total">${totalQuestion}</span>
+                </div>
+                <p class="feedback-message">${getFeedbackMessage(correctAnswers, totalQuestion)}</p>
+            </div>
+        </div>
+    `);
+
+            // Restart button event
+            $('#restart-quiz').click(() => location.reload());
+        }
+
+        // Function to generate feedback based on the score
+        function getFeedbackMessage(correctAnswers, totalQuestions) {
+            let percentage = (correctAnswers / totalQuestions) * 100;
+
+            if (percentage === 100) {
+                return "Keren! Semua jawabanmu benar!";
+            } else if (percentage >= 75) {
+                return "Kerja bagus! Kamu telah mencoba dengan baik";
+            } else if (percentage >= 50) {
+                return "Percobaan yang baik! Berusaha terus!";
+            } else {
+                return "Jangan Menyerah! Coba Lagi Ya.";
+            }
+        }
+
+        // Function to show the confirmation modal
+        function showConfirmationModal() {
+            const modalHtml = `
+                <div class="modal-overlay">
+                    <div class="modal">
+                        <p>Kamu akan menyelesaikan kuis! Apa kamu yakin?</p>
+                        <div class="modal-buttons">
+                            <button id="confirm-yes">Ya</button>
+                            <button id="confirm-no">Tidak</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            $('body').append(modalHtml);
+
+            // Handle modal button clicks
+            $('#confirm-yes').click(() => {
+                $('.modal-overlay').remove();
+                showResults();
+                $("#btn-prev").css('display', 'none');
+                $("#btn-next").css('display', 'none');
+                $("#backToHome").css('display', 'block')
+            });
+
+            $('#confirm-no').click(() => {
+                $('.modal-overlay').remove();
+            });
+        }
+
+        // Handle Next button
+        $('#btn-next').click(() => {
+            if (currentIndex < totalQuestion - 1) {
+                currentIndex++;
+                renderQuestion(currentIndex);
+            } else {
+                // Last question, show confirmation modal
+                showConfirmationModal();
+            }
+        });
+
+        // Handle Previous button
+        $('#btn-prev').click(() => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion(currentIndex);
+            }
+        });
+
+        // Initial render
+        renderQuestion(currentIndex);
     });
 </script>
+
+<style>
+
+</style>
+
+
 <script src="./js/block_back.js"></script>
-<!-- <script src="./js/validate_orientation.js"></script> -->
 
 </html>
